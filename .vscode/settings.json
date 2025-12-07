@@ -3,6 +3,10 @@
     "java.compile.nullAnalysis.mode": "automatic",
     "java.configuration.runtimes": [],
     "maven.executable.path": "",
-    "java.jdt.ls.java.home": ""
+    "java.jdt.ls.java.home": "",
+    "java.project.sourcePaths": [
+        "src/main/java"
+    ],
+    "java.project.outputPath": "target/classes",
+    "java.project.referencedLibraries": []
 }
-
