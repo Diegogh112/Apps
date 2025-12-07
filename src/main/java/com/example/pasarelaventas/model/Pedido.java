@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Pedido {
     private Long id;
+    private Long usuarioId;
     private List<ItemCarrito> items;
     private Double total;
     private String clienteNombre;
@@ -89,6 +90,14 @@ public class Pedido {
 
     public void setFechaCreacion(LocalDateTime fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
+    }
+
+    public Long getUsuarioId() {
+        return usuarioId;
+    }
+
+    public void setUsuarioId(Long usuarioId) {
+        this.usuarioId = usuarioId;
     }
 }
 

@@ -14,10 +14,11 @@ public class PedidoService {
     private final List<Pedido> pedidos = new ArrayList<>();
     private Long nextId = 1L;
 
-    public Pedido crearPedido(List<ItemCarrito> items, String clienteNombre, String clienteEmail, 
+    public Pedido crearPedido(Long usuarioId, List<ItemCarrito> items, String clienteNombre, String clienteEmail, 
                              String clienteDireccion, String metodoPago) {
         Pedido pedido = new Pedido();
         pedido.setId(nextId++);
+        pedido.setUsuarioId(usuarioId);
         pedido.setItems(new ArrayList<>(items));
         pedido.setTotal(items.stream()
                 .mapToDouble(ItemCarrito::getSubtotal)
@@ -30,6 +31,12 @@ public class PedidoService {
 
         pedidos.add(pedido);
         return pedido;
+    }
+
+    public List<Pedido> obtenerPedidosPorUsuario(Long usuarioId) {
+        return pedidos.stream()
+                .filter(p -> p.getUsuarioId() != null && p.getUsuarioId().equals(usuarioId))
+                .toList();
     }
 
     public List<Pedido> obtenerTodos() {
