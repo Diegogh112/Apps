@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot - ImagenAleatoriaApplication",
+            "request": "launch",
+            "mainClass": "com.example.imagenaleatoria.ImagenAleatoriaApplication",
+            "projectName": "imagen-aleatoria",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
+
