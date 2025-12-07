@@ -3,9 +3,9 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Spring Boot - ImagenAleatoriaApplication",
+            "name": "Spring Boot - PasarelaVentasApplication",
             "request": "launch",
-            "mainClass": "com.example.imagenaleatoria.ImagenAleatoriaApplication",
+            "mainClass": "com.example.pasarelaventas.PasarelaVentasApplication",
             "projectName": "imagen-aleatoria",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
