@@ -1,6 +1,5 @@
 package com.example.pasarelaventas.controller;
 
-import com.example.pasarelaventas.model.Usuario;
 import com.example.pasarelaventas.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;

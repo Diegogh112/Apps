@@ -1,23 +1,54 @@
 package com.example.pasarelaventas.model;
 
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "pedido")
 public class Pedido {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    @Column(name = "usuario_id", nullable = false)
     private Long usuarioId;
+    
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<ItemCarrito> items;
+    
+    @Column(nullable = false)
     private Double total;
+    
+    @Column(name = "cliente_nombre", nullable = false)
     private String clienteNombre;
+    
+    @Column(name = "cliente_email", nullable = false)
     private String clienteEmail;
+    
+    @Column(name = "cliente_direccion", nullable = false, length = 500)
     private String clienteDireccion;
+    
+    @Column(name = "metodo_pago", nullable = false)
     private String metodoPago;
+    
+    @Column(nullable = false)
     private String estado;
+    
+    @Column(name = "fecha_creacion", nullable = false)
     private LocalDateTime fechaCreacion;
 
-    public Pedido() {
-        this.fechaCreacion = LocalDateTime.now();
-        this.estado = "PENDIENTE";
+    @PrePersist
+    protected void onCreate() {
+        fechaCreacion = LocalDateTime.now();
+        if (estado == null) {
+            estado = "PENDIENTE";
+        }
+        if (items == null) {
+            items = new ArrayList<>();
+        }
     }
 
     public Long getId() {

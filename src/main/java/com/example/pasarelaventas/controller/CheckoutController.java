@@ -80,8 +80,9 @@ public class CheckoutController {
                 metodoPago
         );
 
-        // Asociar pedido con usuario
+        // Asociar pedido con usuario y guardar
         usuario.agregarPedido(pedido.getId());
+        usuarioService.guardar(usuario);
 
         carritoService.limpiar();
 

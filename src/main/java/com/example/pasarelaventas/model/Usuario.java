@@ -1,15 +1,35 @@
 package com.example.pasarelaventas.model;
 
+import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "usuario")
 public class Usuario {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    @Column(nullable = false)
     private String nombre;
+    
+    @Column(nullable = false, unique = true)
     private String email;
+    
+    @Column(nullable = false)
     private String password;
+    
+    @Column(nullable = false)
     private String direccion;
+    
+    @Column(nullable = false)
     private String telefono;
+    
+    @ElementCollection
+    @CollectionTable(name = "usuario_pedidos", joinColumns = @JoinColumn(name = "usuario_id"))
+    @Column(name = "pedido_id")
     private List<Long> pedidosIds;
 
     public Usuario() {
@@ -83,7 +103,9 @@ public class Usuario {
     }
 
     public void agregarPedido(Long pedidoId) {
+        if (this.pedidosIds == null) {
+            this.pedidosIds = new ArrayList<>();
+        }
         this.pedidosIds.add(pedidoId);
     }
 }
-

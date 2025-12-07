@@ -1,52 +1,41 @@
 package com.example.pasarelaventas.service;
 
 import com.example.pasarelaventas.model.Usuario;
+import com.example.pasarelaventas.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Transactional
 public class UsuarioService {
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    private final List<Usuario> usuarios = new ArrayList<>();
-    private Long nextId = 1L;
-
-    public UsuarioService() {
-        // Usuario de prueba (opcional)
-        // Usuario admin = new Usuario("Admin", "admin@test.com", "admin123", "Dirección Admin", "123456789");
-        // admin.setId(nextId++);
-        // usuarios.add(admin);
-    }
-
     public Usuario registrarUsuario(String nombre, String email, String password, String direccion, String telefono) {
         // Verificar si el email ya existe
-        if (buscarPorEmail(email).isPresent()) {
+        if (usuarioRepository.existsByEmail(email)) {
             throw new RuntimeException("El email ya está registrado");
         }
 
         Usuario usuario = new Usuario(nombre, email, password, direccion, telefono);
-        usuario.setId(nextId++);
-        usuarios.add(usuario);
-        return usuario;
+        return usuarioRepository.save(usuario);
     }
 
     public Optional<Usuario> buscarPorEmail(String email) {
-        return usuarios.stream()
-                .filter(u -> u.getEmail().equalsIgnoreCase(email))
-                .findFirst();
+        return usuarioRepository.findByEmail(email);
     }
 
     public Optional<Usuario> buscarPorId(Long id) {
-        return usuarios.stream()
-                .filter(u -> u.getId().equals(id))
-                .findFirst();
+        return usuarioRepository.findById(id);
     }
 
     public boolean validarCredenciales(String email, String password) {
@@ -56,7 +45,11 @@ public class UsuarioService {
     }
 
     public List<Usuario> obtenerTodos() {
-        return new ArrayList<>(usuarios);
+        return usuarioRepository.findAll();
+    }
+
+    public Usuario guardar(Usuario usuario) {
+        return usuarioRepository.save(usuario);
     }
 }
 

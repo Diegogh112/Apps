@@ -1,8 +1,25 @@
 package com.example.pasarelaventas.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "item_carrito")
 public class ItemCarrito {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "producto_id", nullable = false)
     private Producto producto;
+    
+    @Column(nullable = false)
     private Integer cantidad;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "pedido_id")
+    private Pedido pedido;
 
     public ItemCarrito() {
     }
@@ -30,6 +47,22 @@ public class ItemCarrito {
 
     public Double getSubtotal() {
         return producto.getPrecio() * cantidad;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
     }
 }
 

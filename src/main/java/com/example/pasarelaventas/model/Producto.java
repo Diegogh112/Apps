@@ -1,12 +1,31 @@
 package com.example.pasarelaventas.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "producto")
 public class Producto {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    @Column(nullable = false)
     private String nombre;
+    
+    @Column(length = 1000)
     private String descripcion;
+    
+    @Column(nullable = false)
     private Double precio;
+    
+    @Column(length = 500)
     private String imagen;
+    
+    @Column(nullable = false)
     private Integer stock;
+    
+    @Column(nullable = false)
     private String categoria;
 
     public Producto() {
