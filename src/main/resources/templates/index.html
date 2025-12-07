@@ -173,6 +173,12 @@
             background: #6c757d;
         }
 
+        a.btn {
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+        }
+
         .stock {
             font-size: 0.85rem;
             color: #28a745;
@@ -214,9 +220,7 @@
                         <input type="hidden" name="productoId" th:value="${producto.id}">
                         <button type="submit" class="btn">Agregar al Carrito</button>
                     </form>
-                    <a th:href="@{/producto/{id}(id=${producto.id})}" style="display: block; margin-top: 0.5rem;">
-                        <button type="button" class="btn btn-secondary">Ver Detalles</button>
-                    </a>
+                    <a th:href="@{/producto/{id}(id=${producto.id})}" class="btn btn-secondary" style="display: block; margin-top: 0.5rem; text-align: center; text-decoration: none;">Ver Detalles</a>
                 </div>
             </div>
         </div>

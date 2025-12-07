@@ -183,6 +183,12 @@
             margin-top: 1.5rem;
             font-size: 1.1rem;
         }
+
+        a.btn {
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -201,9 +207,7 @@
         <div th:if="${#lists.isEmpty(items)}" class="carrito-vacio">
             <h2>Tu carrito está vacío</h2>
             <p style="margin-bottom: 2rem; color: #666;">Agrega productos para comenzar a comprar</p>
-            <a href="/" style="text-decoration: none;">
-                <button class="btn" style="padding: 1rem 2rem;">Ir a Productos</button>
-            </a>
+            <a href="/" class="btn" style="padding: 1rem 2rem; text-decoration: none; display: inline-block;">Ir a Productos</a>
         </div>
 
         <div th:if="${!#lists.isEmpty(items)}" class="carrito-contenido">
@@ -246,9 +250,7 @@
                     <span>Total:</span>
                     <span th:text="'$' + ${#numbers.formatDecimal(total, 1, 2)}"></span>
                 </div>
-                <a href="/checkout" style="text-decoration: none;">
-                    <button class="btn btn-checkout">Proceder al Checkout</button>
-                </a>
+                <a href="/checkout" class="btn btn-checkout" style="text-decoration: none; display: block; text-align: center;">Proceder al Checkout</a>
                 <a href="/" style="text-decoration: none; display: block; margin-top: 1rem; text-align: center; color: #667eea;">
                     Continuar Comprando
                 </a>

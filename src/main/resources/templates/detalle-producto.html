@@ -141,6 +141,12 @@
             margin-left: 1rem;
         }
 
+        a.btn {
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+        }
+
         @media (max-width: 768px) {
             .producto-detalle {
                 grid-template-columns: 1fr;
@@ -179,9 +185,7 @@
                     <button type="submit" class="btn">Agregar al Carrito</button>
                 </form>
 
-                <a href="/productos">
-                    <button type="button" class="btn btn-secondary">Volver a Productos</button>
-                </a>
+                <a href="/productos" class="btn btn-secondary" style="display: inline-block; text-align: center; text-decoration: none;">Volver a Productos</a>
             </div>
         </div>
     </div>
