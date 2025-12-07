@@ -71,22 +71,42 @@
 
         .hero {
             text-align: center;
-            padding: 3rem 0;
-            background: white;
-            border-radius: 10px;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
             margin-bottom: 2rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            color: white;
+        }
+
+        .logo-grande {
+            font-size: 6rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
         }
 
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 1rem;
-            color: #667eea;
+            color: white;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
         .hero p {
-            font-size: 1.2rem;
-            color: #666;
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.9);
+            margin-top: 0.5rem;
         }
 
         .productos-grid {
@@ -210,8 +230,10 @@
 
     <div class="container">
         <div class="hero">
-            <h1>Bienvenido a nuestra Tienda</h1>
-            <p>Descubre nuestros productos de alta calidad</p>
+            <div class="logo-grande">🛒</div>
+            <h1>Pasarela de Ventas</h1>
+            <p>Bienvenido a nuestra tienda online</p>
+            <p style="font-size: 1.1rem; margin-top: 1rem;">Descubre productos de alta calidad al mejor precio</p>
         </div>
 
         <div class="productos-grid">
